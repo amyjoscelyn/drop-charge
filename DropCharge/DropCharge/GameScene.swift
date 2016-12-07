@@ -339,6 +339,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         if gameState == .playing
         {
             updateCamera()
+            updateLevel()
             updatePlayer()
             updateLava(deltaTime)
             updateCollisionLava()
@@ -383,6 +384,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             playerState = .lava
             print("Lava!")
             boostPlayer()
+        }
+    }
+    
+    func updateLevel()
+    {
+        let cameraPos = camera!.position
+        if cameraPos.y > levelPositionY - (size.height * 0.55)
+        {
+            createBackgroundOverlay()
+            while lastOverlayPosition.y < levelPositionY
+            {
+                addRandomForegroundOverlay()
+            }
         }
     }
 }
