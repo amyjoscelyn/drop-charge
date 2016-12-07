@@ -59,6 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     let motionManager = CMMotionManager()
     var xAcceleration = CGFloat(0)
+    let cameraNode = SKCameraNode()
     
     override func didMove(to view: SKView)
     {
@@ -72,6 +73,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         setupCoreMotion()
         
         physicsWorld.contactDelegate = self
+        
+        camera?.position = CGPoint(x: size.width/2, y: size.height/2)
     }
     
     func setupNodes()
@@ -86,6 +89,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         platform5Across = loadForegroundOverlayTemplate("Platform5Across")
         coinArrow = loadForegroundOverlayTemplate("CoinArrow")
+        
+        addChild(cameraNode)
+        camera = cameraNode
     }
     
     func setupLevel()
@@ -308,6 +314,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     override func update(_ currentTime: TimeInterval)
     {
+        updateCamera()
         updatePlayer()
+    }
+    
+    func updateCamera()
+    {
+        let cameraTarget = convert(player.position, from: fgNode)
+        let targetPositionY = cameraTarget.y - (size.height * 0.10)
+        let diff = targetPositionY - camera!.position.y
+        
+        let cameraLagFactor = CGFloat(0.2)
+        let lagDiff = diff * cameraLagFactor
+        let newCameraPositionY = camera!.position.y + lagDiff
+        
+        camera?.position.y = newCameraPositionY
     }
 }
