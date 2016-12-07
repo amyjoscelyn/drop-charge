@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import CoreMotion
 
 // MARK: – Game States
 enum GameStatus: Int
@@ -54,7 +55,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var levelPositionY: CGFloat = 0.0
     
     var gameState = GameStatus.waitingForTap
-    var playerStatus = PlayerStatus.idle
+    var playerState = PlayerStatus.idle
+    
+    let motionManager = CMMotionManager()
+    var xAcceleration = CGFloat(0)
     
     override func didMove(to view: SKView)
     {
@@ -65,6 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         fgNode.childNode(withName: "Ready")!.run(scale)
         
         setupPlayer()
+        setupCoreMotion()
         
         physicsWorld.contactDelegate = self
     }
@@ -109,6 +114,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         player.physicsBody!.allowsRotation = false
         player.physicsBody!.categoryBitMask = PhysicsCategory.Player
         player.physicsBody!.collisionBitMask = 0
+    }
+    
+    func setupCoreMotion()
+    {
+        motionManager.accelerometerUpdateInterval = 0.2
+        let queue = OperationQueue()
+        motionManager.startAccelerometerUpdates(to: queue, withHandler:
+            { accelerometerData, error in
+            guard let accelerometerData = accelerometerData else { return }
+            let acceleration = accelerometerData.acceleration
+            self.xAcceleration = (CGFloat(acceleration.x) * 0.75) + (self.xAcceleration * 0.25)
+        })
     }
     
     // MARK: – Overlay Nodes
@@ -241,5 +258,56 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         default:
             break
         }
+    }
+    
+    //helper method
+    func sceneCropAmount() -> CGFloat
+    {
+        guard let view = self.view else { return 0 }
+        
+        let scale = view.bounds.size.height / self.size.height
+        let scaledWidth = self.size.width * scale
+        let scaledOverlap = scaledWidth - view.bounds.size.width
+        
+        return scaledOverlap / scale
+    }
+    
+    func updatePlayer()
+    {
+        // Set velocity based on core motion
+        player.physicsBody?.velocity.dx = xAcceleration * 1000.0
+        
+        // Wrap player around edges of screen
+        var playerPosition = convert(player.position, from: fgNode)
+        let leftLimit = sceneCropAmount()/2 - player.size.width/2
+        let rightLimit = size.width - sceneCropAmount()/2 + player.size.width/2
+        
+        if playerPosition.x < leftLimit
+        {
+            playerPosition = convert(CGPoint(x: rightLimit, y: 0.0), to: fgNode)
+            player.position.x = playerPosition.x
+        }
+        else if playerPosition.x > rightLimit
+        {
+            playerPosition = convert(CGPoint(x: leftLimit, y: 0.0), to: fgNode)
+            player.position.x = playerPosition.x
+        }
+        
+        // Check player state
+        if player.physicsBody!.velocity.dy < CGFloat(0.0) && playerState != .fall
+        {
+            playerState = .fall
+            print("Falling.")
+        }
+        else if player.physicsBody!.velocity.dy > CGFloat(0.0) && playerState != .jump
+        {
+            playerState = .jump
+            print("Jumping.")
+        }
+    }
+    
+    override func update(_ currentTime: TimeInterval)
+    {
+        updatePlayer()
     }
 }
