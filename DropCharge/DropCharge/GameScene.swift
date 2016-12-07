@@ -8,6 +8,24 @@
 
 import SpriteKit
 
+// MARK: – Game States
+enum GameStatus: Int
+{
+    case waitingForTap = 0
+    case waitingForBomb = 1
+    case playing = 2
+    case gameOver = 3
+}
+
+enum PlayerStatus: Int
+{
+    case idle = 0
+    case jump = 1
+    case fall = 2
+    case lava = 3
+    case dead = 4
+}
+
 class GameScene: SKScene
 {
     // MARK: – Properties
@@ -24,10 +42,16 @@ class GameScene: SKScene
     var lastOverlayHeight: CGFloat = 0.0
     var levelPositionY: CGFloat = 0.0
     
+    var gameState = GameStatus.waitingForTap
+    var playerStatus = PlayerStatus.idle
+    
     override func didMove(to view: SKView)
     {
         setupNodes()
         setupLevel()
+        
+        let scale = SKAction.scale(to: 1.0, duration: 0.5)
+        fgNode.childNode(withName: "Ready")!.run(scale)
     }
     
     func setupNodes()
@@ -106,5 +130,44 @@ class GameScene: SKScene
         backgroundOverlay.position = CGPoint(x: 0.0, y: levelPositionY)
         bgNode.addChild(backgroundOverlay)
         levelPositionY += backgroundOverlayHeight
+    }
+    
+    // MARK: – Events
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        if gameState == .waitingForTap
+        {
+            bombDrop()
+        }
+    }
+    
+    func bombDrop()
+    {
+        gameState = .waitingForBomb
+        // Scale out title and ready lable
+        let scale = SKAction.scale(to: 0, duration: 0.4)
+        fgNode.childNode(withName: "Title")!.run(scale)
+        fgNode.childNode(withName: "Ready")!.run(
+            SKAction.sequence(
+                [SKAction.wait(forDuration: 0.2),
+                 scale]))
+        
+        // Bounce bomb
+        let scaleUp = SKAction.scale(to: 1.25, duration: 0.25)
+        let scaleDown = SKAction.scale(to: 1.0, duration: 0.25)
+        let sequence = SKAction.sequence([scaleUp, scaleDown])
+        let repeatSeq = SKAction.repeatForever(sequence)
+        fgNode.childNode(withName: "Bomb")!.run(SKAction.unhide())
+        fgNode.childNode(withName: "Bomb")!.run(repeatSeq)
+        run(SKAction.sequence(
+            [SKAction.wait(forDuration: 2.0),
+             SKAction.run(startGame)]))
+    }
+    
+    func startGame()
+    {
+        fgNode.childNode(withName: "Bomb")!.removeFromParent()
+        gameState = .playing
     }
 }
