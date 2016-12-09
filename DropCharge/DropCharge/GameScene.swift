@@ -606,10 +606,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         emitter.particleScale = 1.2
         emitter.particleScaleRange = 2.0
         emitter.particleScaleSpeed = -1.5
-        emitter.particleColor = SKColor.orange
         emitter.particleColorBlendFactor = 1
         emitter.particleBlendMode = SKBlendMode.add
         emitter.run(SKAction.removeFromParentAfterDelay(2.0))
+        
+        let sequence = SKKeyframeSequence(capacity: 5)
+        sequence.addKeyframeValue(SKColor.white, time: 0)
+        sequence.addKeyframeValue(SKColor.yellow, time: 0.10)
+        sequence.addKeyframeValue(SKColor.orange, time: 0.15)
+        sequence.addKeyframeValue(SKColor.red, time: 0.75)
+        sequence.addKeyframeValue(SKColor.black, time: 0.95)
+        emitter.particleColorSequence = sequence
         
         return emitter
     }
