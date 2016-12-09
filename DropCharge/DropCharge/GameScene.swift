@@ -571,10 +571,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     {
         if player.position.y < lava.position.y + 180
         {
-            playerState = .lava
-            print("Lava!")
+            if playerState != .lava
+            {
+                playerState = .lava
+                let smokeTrail = addTrail(name: "SmokeTrail")
+                run(SKAction.sequence([
+                    SKAction.wait(forDuration: 3.0),
+                    SKAction.run() {
+                        self.removeTrail(trail: smokeTrail)
+                    }
+                    ]))
+            }
             boostPlayer()
-            
             lives -= 1
             if lives <= 0
             {
@@ -630,5 +638,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         emitter.particleColorSequence = sequence
         
         return emitter
+    }
+    
+    func addTrail(name: String) -> SKEmitterNode
+    {
+        let trail = SKEmitterNode(fileNamed: name)!
+        trail.zPosition = -1
+        trail.targetNode = fgNode
+        player.addChild(trail)
+        return trail
+    }
+    
+    func removeTrail(trail: SKEmitterNode)
+    {
+        trail.numParticlesToEmit = 1
+        trail.run(SKAction.removeFromParentAfterDelay(1.0))
     }
 }
