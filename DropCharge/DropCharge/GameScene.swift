@@ -224,6 +224,84 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             }
         }
         createForegroundOverlay(overlaySprite, flipX: false)
+        
+        /*
+        let overlaySprite: SKSpriteNode!
+        var flipH = false
+        let platformPercentage = 60
+        
+        if Int.random(min: 1, max: 100) <= platformPercentage {
+            if Int.random(min: 1, max: 100) <= 75 {
+                // Create standard platforms 75%
+                switch Int.random(min: 0, max: 3) {
+                case 0:
+                    overlaySprite = platformArrow
+                case 1:
+                    overlaySprite = platform5Across
+                case 2:
+                    overlaySprite = platformDiagonal
+                case 3:
+                    overlaySprite = platformDiagonal
+                    flipH = true
+                default:
+                    overlaySprite = platformArrow
+                }
+            } else {
+                // Create breakable platforms 25%
+                switch Int.random(min: 0, max: 3) {
+                case 0:
+                    overlaySprite = breakArrow
+                case 1:
+                    overlaySprite = break5Across
+                case 2:
+                    overlaySprite = breakDiagonal
+                case 3:
+                    overlaySprite = breakDiagonal
+                    flipH = true
+                default:
+                    overlaySprite = breakArrow
+                }
+            }
+        } else {
+            if Int.random(min: 1, max: 100) <= 75 {
+                // Create standard coins 75%
+                switch Int.random(min: 0, max: 4) {
+                case 0:
+                    overlaySprite = coinArrow
+                case 1:
+                    overlaySprite = coin5Across
+                case 2:
+                    overlaySprite = coinDiagonal
+                case 3:
+                    overlaySprite = coinDiagonal
+                    flipH = true
+                case 4:
+                    overlaySprite = coinCross
+                default:
+                    overlaySprite = coinArrow
+                }
+            } else {
+                // Create special coins 25%
+                switch Int.random(min: 0, max: 4) {
+                case 0:
+                    overlaySprite = coinSArrow
+                case 1:
+                    overlaySprite = coinS5Across
+                case 2:
+                    overlaySprite = coinSDiagonal
+                case 3:
+                    overlaySprite = coinSDiagonal
+                    flipH = true
+                case 4:
+                    overlaySprite = coinSCross
+                default:
+                    overlaySprite = coinSArrow
+                }
+            }
+        }
+        
+        createForegroundOverlay(overlaySprite, flipX: flipH)
+        */
     }
     
     func createBackgroundOverlay()
