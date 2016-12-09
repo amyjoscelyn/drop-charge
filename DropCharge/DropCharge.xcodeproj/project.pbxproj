@@ -14,6 +14,8 @@
 		3D07F5231DFA609800EC01B5 /* BreakArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D07F5221DFA609800EC01B5 /* BreakArrow.sks */; };
 		3D07F5251DFA616C00EC01B5 /* BreakDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D07F5241DFA616C00EC01B5 /* BreakDiagonal.sks */; };
 		3D07F5271DFA619700EC01B5 /* Coin5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D07F5261DFA619700EC01B5 /* Coin5Across.sks */; };
+		3D8518291DFA622800ABB058 /* CoinDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D8518281DFA622800ABB058 /* CoinDiagonal.sks */; };
+		3D85182B1DFA625F00ABB058 /* CoinCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D85182A1DFA625F00ABB058 /* CoinCross.sks */; };
 		3DA237E91DF7346500D4303B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA237E81DF7346500D4303B /* AppDelegate.swift */; };
 		3DA237EB1DF7346500D4303B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3DA237EA1DF7346500D4303B /* GameScene.sks */; };
 		3DA237ED1DF7346500D4303B /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3DA237EC1DF7346500D4303B /* Actions.sks */; };
@@ -46,6 +48,8 @@
 		3D07F5221DFA609800EC01B5 /* BreakArrow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BreakArrow.sks; sourceTree = "<group>"; };
 		3D07F5241DFA616C00EC01B5 /* BreakDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BreakDiagonal.sks; sourceTree = "<group>"; };
 		3D07F5261DFA619700EC01B5 /* Coin5Across.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Coin5Across.sks; sourceTree = "<group>"; };
+		3D8518281DFA622800ABB058 /* CoinDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinDiagonal.sks; sourceTree = "<group>"; };
+		3D85182A1DFA625F00ABB058 /* CoinCross.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinCross.sks; sourceTree = "<group>"; };
 		3DA237E51DF7346500D4303B /* DropCharge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DropCharge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA237E81DF7346500D4303B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DA237EA1DF7346500D4303B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 				3DA238031DF73E5300D4303B /* CoinArrow.sks */,
 				3D07F51E1DFA5FAC00EC01B5 /* PlatformArrow.sks */,
 				3D07F5201DFA602000EC01B5 /* PlatformDiagonal.sks */,
+				3D8518281DFA622800ABB058 /* CoinDiagonal.sks */,
+				3D85182A1DFA625F00ABB058 /* CoinCross.sks */,
 				3D07F5241DFA616C00EC01B5 /* BreakDiagonal.sks */,
 				3D07F51A1DFA5BD200EC01B5 /* Break5Across.sks */,
 				3D07F51C1DFA5D1200EC01B5 /* CoinSArrow.sks */,
@@ -224,8 +230,10 @@
 				3DA237F91DF7346500D4303B /* LaunchScreen.storyboard in Resources */,
 				3DA237ED1DF7346500D4303B /* Actions.sks in Resources */,
 				3DA238021DF73D1E00D4303B /* Platform5Across.sks in Resources */,
+				3D8518291DFA622800ABB058 /* CoinDiagonal.sks in Resources */,
 				3D07F51D1DFA5D1200EC01B5 /* CoinSArrow.sks in Resources */,
 				3D07F5271DFA619700EC01B5 /* Coin5Across.sks in Resources */,
+				3D85182B1DFA625F00ABB058 /* CoinCross.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
