@@ -131,19 +131,19 @@
 			isa = PBXGroup;
 			children = (
 				3DA238011DF73D1E00D4303B /* Platform5Across.sks */,
+				3D07F51E1DFA5FAC00EC01B5 /* PlatformArrow.sks */,
+				3D07F5201DFA602000EC01B5 /* PlatformDiagonal.sks */,
+				3D07F51A1DFA5BD200EC01B5 /* Break5Across.sks */,
+				3D07F5221DFA609800EC01B5 /* BreakArrow.sks */,
+				3D07F5241DFA616C00EC01B5 /* BreakDiagonal.sks */,
 				3D07F5261DFA619700EC01B5 /* Coin5Across.sks */,
 				3D85182C1DFA649C00ABB058 /* CoinS5Across.sks */,
 				3DA238031DF73E5300D4303B /* CoinArrow.sks */,
-				3D07F51E1DFA5FAC00EC01B5 /* PlatformArrow.sks */,
-				3D07F5201DFA602000EC01B5 /* PlatformDiagonal.sks */,
+				3D07F51C1DFA5D1200EC01B5 /* CoinSArrow.sks */,
 				3D8518281DFA622800ABB058 /* CoinDiagonal.sks */,
 				3D85182E1DFA64D200ABB058 /* CoinSDiagonal.sks */,
 				3D85182A1DFA625F00ABB058 /* CoinCross.sks */,
 				3D8518301DFA64EE00ABB058 /* CoinSCross.sks */,
-				3D07F5241DFA616C00EC01B5 /* BreakDiagonal.sks */,
-				3D07F51A1DFA5BD200EC01B5 /* Break5Across.sks */,
-				3D07F51C1DFA5D1200EC01B5 /* CoinSArrow.sks */,
-				3D07F5221DFA609800EC01B5 /* BreakArrow.sks */,
 			);
 			name = "Scene Files";
 			sourceTree = "<group>";
