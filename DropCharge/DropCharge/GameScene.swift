@@ -66,6 +66,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var lastUpdateTimeInterval: TimeInterval = 0
     var deltaTime: TimeInterval = 0
     
+    var lives = 3
+    
     override func didMove(to view: SKView)
     {
         setupNodes()
@@ -194,6 +196,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             bombDrop()
         }
+        else if gameState == .gameOver
+        {
+            let newScene = GameScene(fileNamed: "GameScene")
+            newScene!.scaleMode = .aspectFill
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            self.view?.presentScene(newScene!, transition: reveal)
+        }
     }
     
     func bombDrop()
@@ -229,7 +238,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func setPlayerVelocity(_ amount: CGFloat)
     {
-        let gain: CGFloat = 1.5
+        let gain: CGFloat = 2.5
         player.physicsBody!.velocity.dy = max(player.physicsBody!.velocity.dy, amount * gain)
     }
     
@@ -384,6 +393,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             playerState = .lava
             print("Lava!")
             boostPlayer()
+            
+            lives -= 1
+            if lives <= 0
+            {
+                gameOver()
+            }
         }
     }
     
@@ -398,5 +413,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 addRandomForegroundOverlay()
             }
         }
+    }
+    
+    func gameOver()
+    {
+        gameState = .gameOver
+        playerState = .dead
+        
+        physicsWorld.contactDelegate = nil
+        player.physicsBody?.isDynamic = false
+        
+        let moveUp = SKAction.moveBy(x: 0.0,
+                                     y: size.height / 2.0,
+                                     duration: 0.5)
+        moveUp.timingMode = .easeOut
+        let moveDown = SKAction.moveBy(x: 0.0,
+                                       y: -(size.height * 1.5),
+                                       duration: 1.0)
+        moveDown.timingMode = .easeIn
+        player.run(SKAction.sequence([moveUp, moveDown]))
+        
+        let gameOverSprite = SKSpriteNode(imageNamed: "GameOver")
+        gameOverSprite.position = camera!.position
+        gameOverSprite.zPosition = 10
+        addChild(gameOverSprite)
     }
 }
