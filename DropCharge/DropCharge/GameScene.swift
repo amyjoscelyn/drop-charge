@@ -97,6 +97,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         camera?.position = CGPoint(x: size.width/2, y: size.height/2)
     }
     
+    // MARK: – Setup
+    
     func setupNodes()
     {
         let worldNode = childNode(withName: "World")!
@@ -125,7 +127,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         addChild(cameraNode)
         camera = cameraNode
         
-        lava = fgNode.childNode(withName: "Lava") as! SKSpriteNode
+        setupLava()
     }
     
     func setupLevel()
@@ -166,6 +168,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             let acceleration = accelerometerData.acceleration
             self.xAcceleration = (CGFloat(acceleration.x) * 0.75) + (self.xAcceleration * 0.25)
         })
+    }
+    
+    func setupLava()
+    {
+        lava = fgNode.childNode(withName: "Lava") as! SKSpriteNode
+        let emitter = SKEmitterNode(fileNamed: "Lava.sks")!
+        emitter.particlePositionRange = CGVector(dx: size.width * 1.125, dy: 0.0)
+        emitter.advanceSimulationTime(3.0)
+        lava.addChild(emitter)
     }
     
     // MARK: – Overlay Nodes
@@ -558,7 +569,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func updateCollisionLava()
     {
-        if player.position.y < lava.position.y + 90
+        if player.position.y < lava.position.y + 180
         {
             playerState = .lava
             print("Lava!")

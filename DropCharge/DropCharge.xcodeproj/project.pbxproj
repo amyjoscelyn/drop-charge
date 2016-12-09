@@ -19,6 +19,8 @@
 		3D85182D1DFA649C00ABB058 /* CoinS5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D85182C1DFA649C00ABB058 /* CoinS5Across.sks */; };
 		3D85182F1DFA64D200ABB058 /* CoinSDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D85182E1DFA64D200ABB058 /* CoinSDiagonal.sks */; };
 		3D8518311DFA64EE00ABB058 /* CoinSCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D8518301DFA64EE00ABB058 /* CoinSCross.sks */; };
+		3D8518351DFB3C6300ABB058 /* Lava.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D8518331DFB3C6300ABB058 /* Lava.sks */; };
+		3D8518361DFB3C6300ABB058 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D8518341DFB3C6300ABB058 /* spark.png */; };
 		3DA237E91DF7346500D4303B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA237E81DF7346500D4303B /* AppDelegate.swift */; };
 		3DA237EB1DF7346500D4303B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3DA237EA1DF7346500D4303B /* GameScene.sks */; };
 		3DA237ED1DF7346500D4303B /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3DA237EC1DF7346500D4303B /* Actions.sks */; };
@@ -56,6 +58,8 @@
 		3D85182C1DFA649C00ABB058 /* CoinS5Across.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinS5Across.sks; sourceTree = "<group>"; };
 		3D85182E1DFA64D200ABB058 /* CoinSDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinSDiagonal.sks; sourceTree = "<group>"; };
 		3D8518301DFA64EE00ABB058 /* CoinSCross.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinSCross.sks; sourceTree = "<group>"; };
+		3D8518331DFB3C6300ABB058 /* Lava.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Lava.sks; sourceTree = "<group>"; };
+		3D8518341DFB3C6300ABB058 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		3DA237E51DF7346500D4303B /* DropCharge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DropCharge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA237E81DF7346500D4303B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DA237EA1DF7346500D4303B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -93,6 +97,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D8518321DFB3B9300ABB058 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				3D8518331DFB3C6300ABB058 /* Lava.sks */,
+				3D8518341DFB3C6300ABB058 /* spark.png */,
+			);
+			name = Particles;
+			sourceTree = "<group>";
+		};
 		3DA237DC1DF7346500D4303B = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +130,7 @@
 				3DA237EA1DF7346500D4303B /* GameScene.sks */,
 				3DA237EC1DF7346500D4303B /* Actions.sks */,
 				3DA237EE1DF7346500D4303B /* GameScene.swift */,
+				3D8518321DFB3B9300ABB058 /* Particles */,
 				3DA237F01DF7346500D4303B /* GameViewController.swift */,
 				3DA237F21DF7346500D4303B /* Main.storyboard */,
 				3DA237F51DF7346500D4303B /* Assets.xcassets */,
@@ -230,12 +244,14 @@
 				3DA238041DF73E5300D4303B /* CoinArrow.sks in Resources */,
 				3DA237F41DF7346500D4303B /* Main.storyboard in Resources */,
 				3D07F5251DFA616C00EC01B5 /* BreakDiagonal.sks in Resources */,
+				3D8518351DFB3C6300ABB058 /* Lava.sks in Resources */,
 				3D85182F1DFA64D200ABB058 /* CoinSDiagonal.sks in Resources */,
 				3D07F5211DFA602000EC01B5 /* PlatformDiagonal.sks in Resources */,
 				3DA237EB1DF7346500D4303B /* GameScene.sks in Resources */,
 				3DA237F61DF7346500D4303B /* Assets.xcassets in Resources */,
 				3D07F5231DFA609800EC01B5 /* BreakArrow.sks in Resources */,
 				3D07F51F1DFA5FAC00EC01B5 /* PlatformArrow.sks in Resources */,
+				3D8518361DFB3C6300ABB058 /* spark.png in Resources */,
 				3D07F51B1DFA5BD200EC01B5 /* Break5Across.sks in Resources */,
 				3D8518311DFA64EE00ABB058 /* CoinSCross.sks in Resources */,
 				3DA237F91DF7346500D4303B /* LaunchScreen.storyboard in Resources */,
