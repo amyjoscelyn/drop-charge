@@ -193,6 +193,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     func addRandomForegroundOverlay()
     {
         let overlaySprite: SKSpriteNode!
+        var flipH = false
         let platformPercentage = 60
         let regularPercentage = 75
         
@@ -223,7 +224,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 overlaySprite = specialCoins[Int.random(min: 1, max: regularPlatforms.count) - 1]
             }
         }
-        createForegroundOverlay(overlaySprite, flipX: false)
+        createForegroundOverlay(overlaySprite, flipX: flipH)
         
         /*
         let overlaySprite: SKSpriteNode!
@@ -354,7 +355,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func startGame()
     {
-        fgNode.childNode(withName: "Bomb")!.removeFromParent()
+        let bomb = fgNode.childNode(withName: "Bomb")!
+        let bombBlast = explosion(intensity: 2.0)
+        bombBlast.position = bomb.position
+        fgNode.addChild(bombBlast)
+        bomb.removeFromParent()
         gameState = .playing
         player.physicsBody!.isDynamic = true
         superBoostPlayer()
@@ -432,6 +437,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         return scaledOverlap / scale
     }
+    
+    func gameOver()
+    {
+        gameState = .gameOver
+        playerState = .dead
+        
+        physicsWorld.contactDelegate = nil
+        player.physicsBody?.isDynamic = false
+        
+        let moveUp = SKAction.moveBy(x: 0.0,
+                                     y: size.height / 2.0,
+                                     duration: 0.5)
+        moveUp.timingMode = .easeOut
+        let moveDown = SKAction.moveBy(x: 0.0,
+                                       y: -(size.height * 1.5),
+                                       duration: 1.0)
+        moveDown.timingMode = .easeIn
+        player.run(SKAction.sequence([moveUp, moveDown]))
+        
+        let gameOverSprite = SKSpriteNode(imageNamed: "GameOver")
+        gameOverSprite.position = camera!.position
+        gameOverSprite.zPosition = 10
+        addChild(gameOverSprite)
+    }
+    
+    // MARK: – Updates
     
     func updatePlayer()
     {
@@ -554,27 +585,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         }
     }
     
-    func gameOver()
+    // MARK: – Particles
+    
+    func explosion(intensity: CGFloat) -> SKEmitterNode
     {
-        gameState = .gameOver
-        playerState = .dead
+        let emitter = SKEmitterNode()
+        let particleTexture = SKTexture(imageNamed: "spark")
         
-        physicsWorld.contactDelegate = nil
-        player.physicsBody?.isDynamic = false
+        emitter.zPosition = 2
+        emitter.particleTexture = particleTexture
+        emitter.particleBirthRate = 4000 * intensity
+        emitter.numParticlesToEmit = Int(400 * intensity)
+        emitter.particleLifetime = 2.0
+        emitter.emissionAngle = CGFloat(90.0).degreesToRadians()
+        emitter.emissionAngleRange = CGFloat(360.0).degreesToRadians()
+        emitter.particleSpeed = 600 * intensity
+        emitter.particleSpeedRange = 1000 * intensity
+        emitter.particleAlpha = 1.0
+        emitter.particleAlphaRange = 0.25
+        emitter.particleScale = 1.2
+        emitter.particleScaleRange = 2.0
+        emitter.particleScaleSpeed = -1.5
+        emitter.particleColor = SKColor.orange
+        emitter.particleColorBlendFactor = 1
+        emitter.particleBlendMode = SKBlendMode.add
+        emitter.run(SKAction.removeFromParentAfterDelay(2.0))
         
-        let moveUp = SKAction.moveBy(x: 0.0,
-                                     y: size.height / 2.0,
-                                     duration: 0.5)
-        moveUp.timingMode = .easeOut
-        let moveDown = SKAction.moveBy(x: 0.0,
-                                       y: -(size.height * 1.5),
-                                       duration: 1.0)
-        moveDown.timingMode = .easeIn
-        player.run(SKAction.sequence([moveUp, moveDown]))
-        
-        let gameOverSprite = SKSpriteNode(imageNamed: "GameOver")
-        gameOverSprite.position = camera!.position
-        gameOverSprite.zPosition = 10
-        addChild(gameOverSprite)
+        return emitter
     }
 }
