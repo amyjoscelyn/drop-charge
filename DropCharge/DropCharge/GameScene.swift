@@ -63,6 +63,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var coinCross: SKSpriteNode!
     var coinSCross: SKSpriteNode!
     
+    let soundBombDrop = SKAction.playSoundFileNamed("bombDrop.wav", waitForCompletion: true)
+    let soundSuperBoost = SKAction.playSoundFileNamed("nitro.wav", waitForCompletion: false)
+    let soundTickTock = SKAction.playSoundFileNamed("tickTock.wav", waitForCompletion: true)
+    let soundBoost = SKAction.playSoundFileNamed("boost.wav", waitForCompletion: false)
+    let soundJump = SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false)
+    let soundCoin = SKAction.playSoundFileNamed("coin1.wav", waitForCompletion: false)
+    let soundBrick = SKAction.playSoundFileNamed("brick.caf", waitForCompletion: false)
+    let soundHitLava = SKAction.playSoundFileNamed("DrownFireBug.mp3", waitForCompletion: false)
+    let soundGameOver = SKAction.playSoundFileNamed("player_die.wav", waitForCompletion: false)
+    
+    let soundExplosions = [
+        SKAction.playSoundFileNamed("explosion1.wav", waitForCompletion: false),
+        SKAction.playSoundFileNamed("explosion2.wav", waitForCompletion: false),
+        SKAction.playSoundFileNamed("explosion3.wav", waitForCompletion: false),
+        SKAction.playSoundFileNamed("explosion4.wav", waitForCompletion: false) ]
+    
     var lastOverlayPosition = CGPoint.zero
     var lastOverlayHeight: CGFloat = 0.0
     var levelPositionY: CGFloat = 0.0
@@ -362,7 +378,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         fgNode.childNode(withName: "Bomb")!.run(SKAction.unhide())
         fgNode.childNode(withName: "Bomb")!.run(repeatSeq)
         run(SKAction.sequence(
-            [SKAction.wait(forDuration: 2.0),
+            [soundBombDrop, soundTickTock,
              SKAction.run(startGame)]))
     }
     
@@ -373,6 +389,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         bombBlast.position = bomb.position
         fgNode.addChild(bombBlast)
         bomb.removeFromParent()
+        run(soundExplosions[3])
         gameState = .playing
         player.physicsBody!.isDynamic = true
         superBoostPlayer()
@@ -416,12 +433,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             {
                 coin.removeFromParent()
                 jumpPlayer()
+                run(soundCoin)
             }
         case PhysicsCategory.CoinSpecial:
             if let coin = other.node as? SKSpriteNode
             {
                 coin.removeFromParent()
                 boostPlayer()
+                run(soundBoost)
             }
         case PhysicsCategory.PlatformNormal:
             if let _ = other.node as? SKSpriteNode
@@ -429,6 +448,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 if player.physicsBody!.velocity.dy < 0
                 {
                     jumpPlayer()
+                    run(soundJump)
                 }
             }
         case PhysicsCategory.PlatformBreakable:
@@ -438,6 +458,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 {
                     platform.removeFromParent()
                     jumpPlayer()
+                    run(soundBrick)
                 }
             }
         default:
