@@ -14,6 +14,7 @@
 		3D07F5231DFA609800EC01B5 /* BreakArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D07F5221DFA609800EC01B5 /* BreakArrow.sks */; };
 		3D07F5251DFA616C00EC01B5 /* BreakDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D07F5241DFA616C00EC01B5 /* BreakDiagonal.sks */; };
 		3D07F5271DFA619700EC01B5 /* Coin5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D07F5261DFA619700EC01B5 /* Coin5Across.sks */; };
+		3D7156BC1DFF11B4007EB201 /* CollectSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156BB1DFF11B4007EB201 /* CollectSpecial.sks */; };
 		3D8518291DFA622800ABB058 /* CoinDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D8518281DFA622800ABB058 /* CoinDiagonal.sks */; };
 		3D85182B1DFA625F00ABB058 /* CoinCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D85182A1DFA625F00ABB058 /* CoinCross.sks */; };
 		3D85182D1DFA649C00ABB058 /* CoinS5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D85182C1DFA649C00ABB058 /* CoinS5Across.sks */; };
@@ -55,6 +56,7 @@
 		3D07F5221DFA609800EC01B5 /* BreakArrow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BreakArrow.sks; sourceTree = "<group>"; };
 		3D07F5241DFA616C00EC01B5 /* BreakDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BreakDiagonal.sks; sourceTree = "<group>"; };
 		3D07F5261DFA619700EC01B5 /* Coin5Across.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Coin5Across.sks; sourceTree = "<group>"; };
+		3D7156BB1DFF11B4007EB201 /* CollectSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectSpecial.sks; sourceTree = "<group>"; };
 		3D8518281DFA622800ABB058 /* CoinDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinDiagonal.sks; sourceTree = "<group>"; };
 		3D85182A1DFA625F00ABB058 /* CoinCross.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinCross.sks; sourceTree = "<group>"; };
 		3D85182C1DFA649C00ABB058 /* CoinS5Across.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinS5Across.sks; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				3D8518341DFB3C6300ABB058 /* spark.png */,
 				3D8518371DFB755100ABB058 /* SmokeTrail.sks */,
 				3D85183D1DFBA16C00ABB058 /* CollectNormal.sks */,
+				3D7156BB1DFF11B4007EB201 /* CollectSpecial.sks */,
 			);
 			name = Particles;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				3D8518311DFA64EE00ABB058 /* CoinSCross.sks in Resources */,
 				3D85183E1DFBA16C00ABB058 /* CollectNormal.sks in Resources */,
 				3DA237F91DF7346500D4303B /* LaunchScreen.storyboard in Resources */,
+				3D7156BC1DFF11B4007EB201 /* CollectSpecial.sks in Resources */,
 				3DA237ED1DF7346500D4303B /* Actions.sks in Resources */,
 				3DA238021DF73D1E00D4303B /* Platform5Across.sks in Resources */,
 				3D8518291DFA622800ABB058 /* CoinDiagonal.sks in Resources */,
