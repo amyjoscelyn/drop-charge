@@ -376,6 +376,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         gameState = .playing
         player.physicsBody!.isDynamic = true
         superBoostPlayer()
+        playBackgroundMusic(name: "bgMusic.mp3")
     }
     
     func setPlayerVelocity(_ amount: CGFloat)
