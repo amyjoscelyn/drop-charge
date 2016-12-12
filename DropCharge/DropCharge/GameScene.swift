@@ -377,6 +377,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         player.physicsBody!.isDynamic = true
         superBoostPlayer()
         playBackgroundMusic(name: "bgMusic.mp3")
+        
+        let alarm = SKAudioNode(fileNamed: "alarm.wav")
+        alarm.name = "alarm"
+        alarm.autoplayLooped = true
+        addChild(alarm)
     }
     
     func setPlayerVelocity(_ amount: CGFloat)
@@ -474,6 +479,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         gameOverSprite.position = camera!.position
         gameOverSprite.zPosition = 10
         addChild(gameOverSprite)
+        
+        playBackgroundMusic(name: "SpaceGame.caf")
+        if let alarm = childNode(withName: "alarm")
+        {
+            alarm.removeFromParent()
+        }
     }
     
     // MARK: – Updates
