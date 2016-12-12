@@ -17,6 +17,24 @@
 		3D7156BC1DFF11B4007EB201 /* CollectSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156BB1DFF11B4007EB201 /* CollectSpecial.sks */; };
 		3D7156BE1DFF1597007EB201 /* BrokenPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156BD1DFF1597007EB201 /* BrokenPlatform.sks */; };
 		3D7156C01DFF1A18007EB201 /* PlayerTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156BF1DFF1A18007EB201 /* PlayerTrail.sks */; };
+		3D7156D41DFF46AF007EB201 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156C21DFF46AF007EB201 /* alarm.wav */; };
+		3D7156D51DFF46AF007EB201 /* attribution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156C31DFF46AF007EB201 /* attribution.txt */; };
+		3D7156D61DFF46AF007EB201 /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156C41DFF46AF007EB201 /* bgMusic.mp3 */; };
+		3D7156D71DFF46AF007EB201 /* bombDrop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156C51DFF46AF007EB201 /* bombDrop.wav */; };
+		3D7156D81DFF46AF007EB201 /* boost.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156C61DFF46AF007EB201 /* boost.wav */; };
+		3D7156D91DFF46AF007EB201 /* brick.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156C71DFF46AF007EB201 /* brick.caf */; };
+		3D7156DA1DFF46AF007EB201 /* coin1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156C81DFF46AF007EB201 /* coin1.wav */; };
+		3D7156DB1DFF46AF007EB201 /* coin4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156C91DFF46AF007EB201 /* coin4.wav */; };
+		3D7156DC1DFF46AF007EB201 /* DrownFireBug.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156CA1DFF46AF007EB201 /* DrownFireBug.mp3 */; };
+		3D7156DD1DFF46AF007EB201 /* explosion1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156CB1DFF46AF007EB201 /* explosion1.wav */; };
+		3D7156DE1DFF46AF007EB201 /* explosion2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156CC1DFF46AF007EB201 /* explosion2.wav */; };
+		3D7156DF1DFF46AF007EB201 /* explosion3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156CD1DFF46AF007EB201 /* explosion3.wav */; };
+		3D7156E01DFF46AF007EB201 /* explosion4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156CE1DFF46AF007EB201 /* explosion4.wav */; };
+		3D7156E11DFF46AF007EB201 /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156CF1DFF46AF007EB201 /* jump.wav */; };
+		3D7156E21DFF46AF007EB201 /* nitro.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156D01DFF46AF007EB201 /* nitro.wav */; };
+		3D7156E31DFF46AF007EB201 /* player_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156D11DFF46AF007EB201 /* player_die.wav */; };
+		3D7156E41DFF46AF007EB201 /* SpaceGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156D21DFF46AF007EB201 /* SpaceGame.caf */; };
+		3D7156E51DFF46AF007EB201 /* tickTock.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156D31DFF46AF007EB201 /* tickTock.wav */; };
 		3D8518291DFA622800ABB058 /* CoinDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D8518281DFA622800ABB058 /* CoinDiagonal.sks */; };
 		3D85182B1DFA625F00ABB058 /* CoinCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D85182A1DFA625F00ABB058 /* CoinCross.sks */; };
 		3D85182D1DFA649C00ABB058 /* CoinS5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D85182C1DFA649C00ABB058 /* CoinS5Across.sks */; };
@@ -61,6 +79,24 @@
 		3D7156BB1DFF11B4007EB201 /* CollectSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectSpecial.sks; sourceTree = "<group>"; };
 		3D7156BD1DFF1597007EB201 /* BrokenPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrokenPlatform.sks; sourceTree = "<group>"; };
 		3D7156BF1DFF1A18007EB201 /* PlayerTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayerTrail.sks; sourceTree = "<group>"; };
+		3D7156C21DFF46AF007EB201 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
+		3D7156C31DFF46AF007EB201 /* attribution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attribution.txt; sourceTree = "<group>"; };
+		3D7156C41DFF46AF007EB201 /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
+		3D7156C51DFF46AF007EB201 /* bombDrop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bombDrop.wav; sourceTree = "<group>"; };
+		3D7156C61DFF46AF007EB201 /* boost.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boost.wav; sourceTree = "<group>"; };
+		3D7156C71DFF46AF007EB201 /* brick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick.caf; sourceTree = "<group>"; };
+		3D7156C81DFF46AF007EB201 /* coin1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin1.wav; sourceTree = "<group>"; };
+		3D7156C91DFF46AF007EB201 /* coin4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin4.wav; sourceTree = "<group>"; };
+		3D7156CA1DFF46AF007EB201 /* DrownFireBug.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DrownFireBug.mp3; sourceTree = "<group>"; };
+		3D7156CB1DFF46AF007EB201 /* explosion1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion1.wav; sourceTree = "<group>"; };
+		3D7156CC1DFF46AF007EB201 /* explosion2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion2.wav; sourceTree = "<group>"; };
+		3D7156CD1DFF46AF007EB201 /* explosion3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion3.wav; sourceTree = "<group>"; };
+		3D7156CE1DFF46AF007EB201 /* explosion4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion4.wav; sourceTree = "<group>"; };
+		3D7156CF1DFF46AF007EB201 /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
+		3D7156D01DFF46AF007EB201 /* nitro.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = nitro.wav; sourceTree = "<group>"; };
+		3D7156D11DFF46AF007EB201 /* player_die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = player_die.wav; sourceTree = "<group>"; };
+		3D7156D21DFF46AF007EB201 /* SpaceGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpaceGame.caf; sourceTree = "<group>"; };
+		3D7156D31DFF46AF007EB201 /* tickTock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tickTock.wav; sourceTree = "<group>"; };
 		3D8518281DFA622800ABB058 /* CoinDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinDiagonal.sks; sourceTree = "<group>"; };
 		3D85182A1DFA625F00ABB058 /* CoinCross.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinCross.sks; sourceTree = "<group>"; };
 		3D85182C1DFA649C00ABB058 /* CoinS5Across.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinS5Across.sks; sourceTree = "<group>"; };
@@ -107,6 +143,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D7156C11DFF46AF007EB201 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				3D7156C21DFF46AF007EB201 /* alarm.wav */,
+				3D7156C31DFF46AF007EB201 /* attribution.txt */,
+				3D7156C41DFF46AF007EB201 /* bgMusic.mp3 */,
+				3D7156C51DFF46AF007EB201 /* bombDrop.wav */,
+				3D7156C61DFF46AF007EB201 /* boost.wav */,
+				3D7156C71DFF46AF007EB201 /* brick.caf */,
+				3D7156C81DFF46AF007EB201 /* coin1.wav */,
+				3D7156C91DFF46AF007EB201 /* coin4.wav */,
+				3D7156CA1DFF46AF007EB201 /* DrownFireBug.mp3 */,
+				3D7156CB1DFF46AF007EB201 /* explosion1.wav */,
+				3D7156CC1DFF46AF007EB201 /* explosion2.wav */,
+				3D7156CD1DFF46AF007EB201 /* explosion3.wav */,
+				3D7156CE1DFF46AF007EB201 /* explosion4.wav */,
+				3D7156CF1DFF46AF007EB201 /* jump.wav */,
+				3D7156D01DFF46AF007EB201 /* nitro.wav */,
+				3D7156D11DFF46AF007EB201 /* player_die.wav */,
+				3D7156D21DFF46AF007EB201 /* SpaceGame.caf */,
+				3D7156D31DFF46AF007EB201 /* tickTock.wav */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
 		3D8518321DFB3B9300ABB058 /* Particles */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +206,7 @@
 				3DA237EA1DF7346500D4303B /* GameScene.sks */,
 				3DA237EC1DF7346500D4303B /* Actions.sks */,
 				3DA237EE1DF7346500D4303B /* GameScene.swift */,
+				3D7156C11DFF46AF007EB201 /* sounds */,
 				3D8518321DFB3B9300ABB058 /* Particles */,
 				3DA237F01DF7346500D4303B /* GameViewController.swift */,
 				3DA237F21DF7346500D4303B /* Main.storyboard */,
@@ -256,27 +318,45 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D7156E11DFF46AF007EB201 /* jump.wav in Resources */,
+				3D7156E01DFF46AF007EB201 /* explosion4.wav in Resources */,
 				3D8518381DFB755100ABB058 /* SmokeTrail.sks in Resources */,
+				3D7156E41DFF46AF007EB201 /* SpaceGame.caf in Resources */,
+				3D7156D71DFF46AF007EB201 /* bombDrop.wav in Resources */,
 				3DA238041DF73E5300D4303B /* CoinArrow.sks in Resources */,
 				3DA237F41DF7346500D4303B /* Main.storyboard in Resources */,
 				3D07F5251DFA616C00EC01B5 /* BreakDiagonal.sks in Resources */,
 				3D8518351DFB3C6300ABB058 /* Lava.sks in Resources */,
+				3D7156DA1DFF46AF007EB201 /* coin1.wav in Resources */,
 				3D85182F1DFA64D200ABB058 /* CoinSDiagonal.sks in Resources */,
+				3D7156E31DFF46AF007EB201 /* player_die.wav in Resources */,
 				3D07F5211DFA602000EC01B5 /* PlatformDiagonal.sks in Resources */,
 				3DA237EB1DF7346500D4303B /* GameScene.sks in Resources */,
 				3DA237F61DF7346500D4303B /* Assets.xcassets in Resources */,
 				3D7156C01DFF1A18007EB201 /* PlayerTrail.sks in Resources */,
+				3D7156DD1DFF46AF007EB201 /* explosion1.wav in Resources */,
 				3D07F5231DFA609800EC01B5 /* BreakArrow.sks in Resources */,
+				3D7156D91DFF46AF007EB201 /* brick.caf in Resources */,
 				3D07F51F1DFA5FAC00EC01B5 /* PlatformArrow.sks in Resources */,
 				3D8518361DFB3C6300ABB058 /* spark.png in Resources */,
 				3D07F51B1DFA5BD200EC01B5 /* Break5Across.sks in Resources */,
+				3D7156DF1DFF46AF007EB201 /* explosion3.wav in Resources */,
+				3D7156D51DFF46AF007EB201 /* attribution.txt in Resources */,
+				3D7156E21DFF46AF007EB201 /* nitro.wav in Resources */,
+				3D7156DB1DFF46AF007EB201 /* coin4.wav in Resources */,
 				3D8518311DFA64EE00ABB058 /* CoinSCross.sks in Resources */,
 				3D85183E1DFBA16C00ABB058 /* CollectNormal.sks in Resources */,
 				3DA237F91DF7346500D4303B /* LaunchScreen.storyboard in Resources */,
 				3D7156BC1DFF11B4007EB201 /* CollectSpecial.sks in Resources */,
+				3D7156D61DFF46AF007EB201 /* bgMusic.mp3 in Resources */,
 				3DA237ED1DF7346500D4303B /* Actions.sks in Resources */,
+				3D7156E51DFF46AF007EB201 /* tickTock.wav in Resources */,
 				3DA238021DF73D1E00D4303B /* Platform5Across.sks in Resources */,
+				3D7156D41DFF46AF007EB201 /* alarm.wav in Resources */,
 				3D8518291DFA622800ABB058 /* CoinDiagonal.sks in Resources */,
+				3D7156DC1DFF46AF007EB201 /* DrownFireBug.mp3 in Resources */,
+				3D7156DE1DFF46AF007EB201 /* explosion2.wav in Resources */,
+				3D7156D81DFF46AF007EB201 /* boost.wav in Resources */,
 				3D07F51D1DFA5D1200EC01B5 /* CoinSArrow.sks in Resources */,
 				3D07F5271DFA619700EC01B5 /* Coin5Across.sks in Resources */,
 				3D7156BE1DFF1597007EB201 /* BrokenPlatform.sks in Resources */,

@@ -95,6 +95,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         physicsWorld.contactDelegate = self
         
         camera?.position = CGPoint(x: size.width/2, y: size.height/2)
+        
+        playBackgroundMusic(name: "SpaceGame.caf")
     }
     
     // MARK: – Setup
@@ -653,5 +655,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     {
         trail.numParticlesToEmit = 1
         trail.run(SKAction.removeFromParentAfterDelay(1.0))
+    }
+    
+    func playBackgroundMusic(name: String)
+    {
+        if let backgroundMusic = childNode(withName: "backgroundMusic")
+        {
+            backgroundMusic.removeFromParent()
+        }
+        
+        let music = SKAudioNode(fileNamed: name)
+        music.name = "backgroundMusic"
+        music.autoplayLooped = true
+        addChild(music)
     }
 }
