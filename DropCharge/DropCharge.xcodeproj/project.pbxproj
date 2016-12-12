@@ -22,6 +22,7 @@
 		3D8518351DFB3C6300ABB058 /* Lava.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D8518331DFB3C6300ABB058 /* Lava.sks */; };
 		3D8518361DFB3C6300ABB058 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D8518341DFB3C6300ABB058 /* spark.png */; };
 		3D8518381DFB755100ABB058 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D8518371DFB755100ABB058 /* SmokeTrail.sks */; };
+		3D85183E1DFBA16C00ABB058 /* CollectNormal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D85183D1DFBA16C00ABB058 /* CollectNormal.sks */; };
 		3DA237E91DF7346500D4303B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA237E81DF7346500D4303B /* AppDelegate.swift */; };
 		3DA237EB1DF7346500D4303B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3DA237EA1DF7346500D4303B /* GameScene.sks */; };
 		3DA237ED1DF7346500D4303B /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3DA237EC1DF7346500D4303B /* Actions.sks */; };
@@ -62,6 +63,7 @@
 		3D8518331DFB3C6300ABB058 /* Lava.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Lava.sks; sourceTree = "<group>"; };
 		3D8518341DFB3C6300ABB058 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		3D8518371DFB755100ABB058 /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
+		3D85183D1DFBA16C00ABB058 /* CollectNormal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectNormal.sks; sourceTree = "<group>"; };
 		3DA237E51DF7346500D4303B /* DropCharge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DropCharge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA237E81DF7346500D4303B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DA237EA1DF7346500D4303B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				3D8518331DFB3C6300ABB058 /* Lava.sks */,
 				3D8518341DFB3C6300ABB058 /* spark.png */,
 				3D8518371DFB755100ABB058 /* SmokeTrail.sks */,
+				3D85183D1DFBA16C00ABB058 /* CollectNormal.sks */,
 			);
 			name = Particles;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				3D8518361DFB3C6300ABB058 /* spark.png in Resources */,
 				3D07F51B1DFA5BD200EC01B5 /* Break5Across.sks in Resources */,
 				3D8518311DFA64EE00ABB058 /* CoinSCross.sks in Resources */,
+				3D85183E1DFBA16C00ABB058 /* CollectNormal.sks in Resources */,
 				3DA237F91DF7346500D4303B /* LaunchScreen.storyboard in Resources */,
 				3DA237ED1DF7346500D4303B /* Actions.sks in Resources */,
 				3DA238021DF73D1E00D4303B /* Platform5Across.sks in Resources */,
