@@ -495,6 +495,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                                        duration: 1.0)
         moveDown.timingMode = .easeIn
         player.run(SKAction.sequence([moveUp, moveDown]))
+        run(soundGameOver)
         
         let gameOverSprite = SKSpriteNode(imageNamed: "GameOver")
         gameOverSprite.position = camera!.position
@@ -611,6 +612,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 playerState = .lava
                 let smokeTrail = addTrail(name: "SmokeTrail")
                 run(SKAction.sequence([
+                    soundHitLava,
                     SKAction.wait(forDuration: 3.0),
                     SKAction.run() {
                         self.removeTrail(trail: smokeTrail)
