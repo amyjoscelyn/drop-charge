@@ -492,14 +492,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         case PhysicsCategory.CoinNormal:
             if let coin = other.node as? SKSpriteNode
             {
-                coin.removeFromParent()
+                emitParticles(name: "CollectNormal", sprite: coin)
                 jumpPlayer()
                 run(soundCoin)
             }
         case PhysicsCategory.CoinSpecial:
             if let coin = other.node as? SKSpriteNode
             {
-                coin.removeFromParent()
+                emitParticles(name: "CollectSpecial", sprite: coin)
                 boostPlayer()
                 run(soundBoost)
             }
@@ -517,7 +517,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             {
                 if player.physicsBody!.velocity.dy < 0
                 {
-                    platform.removeFromParent()
+                    emitParticles(name: "BrokenPlatform", sprite: platform)
                     jumpPlayer()
                     run(soundBrick)
                 }
@@ -568,6 +568,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             alarm.removeFromParent()
         }
+        
+        let blast = explosion(intensity: 3.0)
+        blast.position = gameOverSprite.position
+        blast.zPosition = 11
+        addChild(blast)
+        run(soundExplosions[3])
     }
     
     // MARK: – Updates
@@ -846,6 +852,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     func emitParticles(name: String, sprite: SKSpriteNode)
     {
         let pos = fgNode.convert(sprite.position, from: sprite.parent!)
-        
+        let particles = SKEmitterNode(fileNamed: name)!
+        particles.position = pos
+        particles.zPosition = 3
+        fgNode.addChild(particles)
+        particles.run(SKAction.removeFromParentAfterDelay(1.0))
+        sprite.run(SKAction.sequence([
+            SKAction.scale(to: 0.0, duration: 0.5),
+            SKAction.removeFromParent()]))
     }
 }
