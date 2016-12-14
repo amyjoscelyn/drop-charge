@@ -72,6 +72,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var playerAnimationSteerRight: SKAction!
     var currentPlayerAnimation: SKAction?
     
+    var playerTrail: SKEmitterNode!
+    
     let soundBombDrop = SKAction.playSoundFileNamed("bombDrop.wav", waitForCompletion: true)
     let soundSuperBoost = SKAction.playSoundFileNamed("nitro.wav", waitForCompletion: false)
     let soundTickTock = SKAction.playSoundFileNamed("tickTock.wav", waitForCompletion: true)
@@ -196,6 +198,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         player.physicsBody!.allowsRotation = false
         player.physicsBody!.categoryBitMask = PhysicsCategory.Player
         player.physicsBody!.collisionBitMask = 0
+        
+        playerTrail = addTrail(name: "PlayerTrail")
     }
     
     func setupCoreMotion()
@@ -590,7 +594,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         if player.physicsBody!.velocity.dy < CGFloat(0.0) && playerState != .fall
         {
             playerState = .fall
-            print("Falling.")
+            if playerTrail.particleBirthRate == 0
+            {
+                playerTrail.particleBirthRate = 200
+            }
         }
         else if player.physicsBody!.velocity.dy > CGFloat(0.0) && playerState != .jump
         {
@@ -688,6 +695,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             if playerState != .lava
             {
                 playerState = .lava
+                playerTrail.particleBirthRate = 0
                 let smokeTrail = addTrail(name: "SmokeTrail")
                 run(SKAction.sequence([
                     soundHitLava,
