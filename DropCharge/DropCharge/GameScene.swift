@@ -66,6 +66,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var coin: SKSpriteNode!
     var coinSpecial: SKSpriteNode!
     
+    var playerAnimationJump: SKAction!
+    var playerAnimationFall: SKAction!
+    var playerAnimationSteerLeft: SKAction!
+    var playerAnimationSteerRight: SKAction!
+    var currentPlayerAnimation: SKAction?
+    
     let soundBombDrop = SKAction.playSoundFileNamed("bombDrop.wav", waitForCompletion: true)
     let soundSuperBoost = SKAction.playSoundFileNamed("nitro.wav", waitForCompletion: false)
     let soundTickTock = SKAction.playSoundFileNamed("tickTock.wav", waitForCompletion: true)
@@ -116,6 +122,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         camera?.position = CGPoint(x: size.width/2, y: size.height/2)
         
         playBackgroundMusic(name: "SpaceGame.caf")
+        
+        playerAnimationJump = setupAnimationWithPrefix(
+            "player01_jump_", start: 1, end: 4, timePerFrame: 0.1)
+        playerAnimationFall = setupAnimationWithPrefix(
+            "player01_fall_", start: 1, end: 3, timePerFrame: 0.1)
+        playerAnimationSteerLeft = setupAnimationWithPrefix(
+            "player01_steerleft_", start: 1, end: 2, timePerFrame: 0.1)
+        playerAnimationSteerRight = setupAnimationWithPrefix(
+            "player01_steerright_", start: 1, end: 2, timePerFrame: 0.1)
     }
     
     // MARK: – Setup
@@ -582,6 +597,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             playerState = .jump
             print("Jumping.")
         }
+        
+        // Animate player
+        if playerState == .jump
+        {
+            if abs(player.physicsBody!.velocity.dx) > 100.0
+            {
+                if player.physicsBody!.velocity.dx > 0
+                {
+                    runPlayerAnimation(playerAnimationSteerRight)
+                }
+                else
+                {
+                    runPlayerAnimation(playerAnimationSteerLeft)
+                }
+            }
+            else
+            {
+                runPlayerAnimation(playerAnimationJump)
+            }
+        }
+        else if playerState == .fall
+        {
+            runPlayerAnimation(playerAnimationFall)
+        }
     }
     
     override func update(_ currentTime: TimeInterval)
@@ -742,5 +781,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         music.name = "backgroundMusic"
         music.autoplayLooped = true
         addChild(music)
+    }
+    
+    func setupAnimationWithPrefix(_ prefix: String, start: Int, end: Int, timePerFrame: TimeInterval) -> SKAction
+    {
+        var textures = [SKTexture]()
+        for i in start...end
+        {
+            textures.append(SKTexture(imageNamed: "\(prefix)\(i)"))
+        }
+        return SKAction.animate(with: textures, timePerFrame: timePerFrame)
+    }
+    
+    func runPlayerAnimation(_ animation: SKAction)
+    {
+        if currentPlayerAnimation == nil || currentPlayerAnimation != animation
+        {
+            player.removeAction(forKey: "playerAnimation")
+            player.run(animation, withKey: "playerAnimation")
+            currentPlayerAnimation = animation
+        }
     }
 }
