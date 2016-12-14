@@ -106,6 +106,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var lastUpdateTimeInterval: TimeInterval = 0
     var deltaTime: TimeInterval = 0
     
+    var timeSinceLastExplosion: TimeInterval = 0
+    var timeForNextExplosion: TimeInterval = 1.0
+    
     var lives = 3
     
     override func didMove(to view: SKView)
@@ -654,6 +657,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             updatePlayer()
             updateLava(deltaTime)
             updateCollisionLava()
+            updateExplosions(deltaTime)
         }
     }
     
@@ -714,6 +718,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         }
     }
     
+    func updateExplosions(_ dt: TimeInterval)
+    {
+        timeSinceLastExplosion += dt
+        if timeSinceLastExplosion > timeForNextExplosion
+        {
+            timeForNextExplosion = TimeInterval(CGFloat.random(min: 0.1, max: 0.5))
+            timeSinceLastExplosion = 0
+            
+            createRandomExplosion()
+        }
+    }
+    
     func updateLevel()
     {
         let cameraPos = camera!.position
@@ -728,6 +744,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     }
     
     // MARK: – Particles
+    
+    func createRandomExplosion()
+    {
+        let cameraPos = camera!.position
+        let sceneSize = self.size
+        
+        let explosionPos = CGPoint(x: CGFloat.random(min: 0.0, max: cameraPos.x * 2.0), y: CGFloat.random(min: cameraPos.y - sceneSize.height / 2, max: cameraPos.y + sceneSize.height * 0.35))
+        
+        let randomNum = Int.random(soundExplosions.count)
+        run(soundExplosions[randomNum])
+        
+        let explode = explosion(intensity: 0.25 * CGFloat(randomNum + 1))
+        explode.position = convert(explosionPos, to: bgNode)
+        explode.run(SKAction.removeFromParentAfterDelay(2.0))
+        bgNode.addChild(explode)
+    }
     
     func explosion(intensity: CGFloat) -> SKEmitterNode
     {
@@ -809,5 +841,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             player.run(animation, withKey: "playerAnimation")
             currentPlayerAnimation = animation
         }
+    }
+    
+    func emitParticles(name: String, sprite: SKSpriteNode)
+    {
+        let pos = fgNode.convert(sprite.position, from: sprite.parent!)
+        
     }
 }
