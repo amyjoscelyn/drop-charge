@@ -63,6 +63,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var coinCross: SKSpriteNode!
     var coinSCross: SKSpriteNode!
     
+    var coin: SKSpriteNode!
+    var coinSpecial: SKSpriteNode!
+    
     let soundBombDrop = SKAction.playSoundFileNamed("bombDrop.wav", waitForCompletion: true)
     let soundSuperBoost = SKAction.playSoundFileNamed("nitro.wav", waitForCompletion: false)
     let soundTickTock = SKAction.playSoundFileNamed("tickTock.wav", waitForCompletion: true)
@@ -133,14 +136,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         break5Across = loadForegroundOverlayTemplate("Break5Across")
         breakArrow = loadForegroundOverlayTemplate("BreakArrow")
         breakDiagonal = loadForegroundOverlayTemplate("BreakDiagonal")
-        coin5Across = loadForegroundOverlayTemplate("Coin5Across")
-        coinS5Across = loadForegroundOverlayTemplate("CoinS5Across")
-        coinArrow = loadForegroundOverlayTemplate("CoinArrow")
-        coinSArrow = loadForegroundOverlayTemplate("CoinSArrow")
-        coinDiagonal = loadForegroundOverlayTemplate("CoinDiagonal")
-        coinSDiagonal = loadForegroundOverlayTemplate("CoinSDiagonal")
-        coinCross = loadForegroundOverlayTemplate("CoinCross")
-        coinSCross = loadForegroundOverlayTemplate("CoinSCross")
+        
+        coin = loadCoin("Coin")
+        coinSpecial = loadCoin("CoinSpecial")
+        
+        coin5Across = loadCoinOverlayTemplate("Coin5Across")
+        coinS5Across = loadCoinOverlayTemplate("CoinS5Across")
+        coinArrow = loadCoinOverlayTemplate("CoinArrow")
+        coinSArrow = loadCoinOverlayTemplate("CoinSArrow")
+        coinDiagonal = loadCoinOverlayTemplate("CoinDiagonal")
+        coinSDiagonal = loadCoinOverlayTemplate("CoinSDiagonal")
+        coinCross = loadCoinOverlayTemplate("CoinCross")
+        coinSCross = loadCoinOverlayTemplate("CoinSCross")
         
         addChild(cameraNode)
         camera = cameraNode
@@ -198,6 +205,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     }
     
     // MARK: – Overlay Nodes
+    
+    func loadCoin(_ fileName: String) -> SKSpriteNode
+    {
+        let coinScene = SKScene(fileNamed: fileName)!
+        let coinTemplate = coinScene.childNode(withName: "Coin")
+        return coinTemplate as! SKSpriteNode
+    }
+    
+    func loadCoinOverlayTemplate(_ fileName: String) -> SKSpriteNode
+    {
+        let overlayTemplate = loadForegroundOverlayTemplate(fileName)
+        
+        overlayTemplate.enumerateChildNodes(withName: "*",
+                                            using: { (node, stop) in
+            let coinPos = node.position
+            let coin: SKSpriteNode
+            
+            if node.name == "special"
+            {
+                coin = self.coinSpecial.copy() as! SKSpriteNode
+            }
+            else
+            {
+                coin = self.coin.copy() as! SKSpriteNode
+            }
+            
+            coin.position = coinPos
+            overlayTemplate.addChild(coin)
+            node.removeFromParent()
+        })
+        return overlayTemplate
+    }
     
     func loadForegroundOverlayTemplate(_ fileName: String) -> SKSpriteNode
     {

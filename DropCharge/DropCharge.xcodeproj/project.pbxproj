@@ -35,6 +35,8 @@
 		3D7156E31DFF46AF007EB201 /* player_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156D11DFF46AF007EB201 /* player_die.wav */; };
 		3D7156E41DFF46AF007EB201 /* SpaceGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156D21DFF46AF007EB201 /* SpaceGame.caf */; };
 		3D7156E51DFF46AF007EB201 /* tickTock.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156D31DFF46AF007EB201 /* tickTock.wav */; };
+		3D7156E71DFF4DB9007EB201 /* Coin.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156E61DFF4DB9007EB201 /* Coin.sks */; };
+		3D7156E91DFF4FF8007EB201 /* CoinSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D7156E81DFF4FF8007EB201 /* CoinSpecial.sks */; };
 		3D8518291DFA622800ABB058 /* CoinDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D8518281DFA622800ABB058 /* CoinDiagonal.sks */; };
 		3D85182B1DFA625F00ABB058 /* CoinCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D85182A1DFA625F00ABB058 /* CoinCross.sks */; };
 		3D85182D1DFA649C00ABB058 /* CoinS5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3D85182C1DFA649C00ABB058 /* CoinS5Across.sks */; };
@@ -97,6 +99,8 @@
 		3D7156D11DFF46AF007EB201 /* player_die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = player_die.wav; sourceTree = "<group>"; };
 		3D7156D21DFF46AF007EB201 /* SpaceGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpaceGame.caf; sourceTree = "<group>"; };
 		3D7156D31DFF46AF007EB201 /* tickTock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tickTock.wav; sourceTree = "<group>"; };
+		3D7156E61DFF4DB9007EB201 /* Coin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Coin.sks; sourceTree = "<group>"; };
+		3D7156E81DFF4FF8007EB201 /* CoinSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinSpecial.sks; sourceTree = "<group>"; };
 		3D8518281DFA622800ABB058 /* CoinDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinDiagonal.sks; sourceTree = "<group>"; };
 		3D85182A1DFA625F00ABB058 /* CoinCross.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinCross.sks; sourceTree = "<group>"; };
 		3D85182C1DFA649C00ABB058 /* CoinS5Across.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinS5Across.sks; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 				3D85182E1DFA64D200ABB058 /* CoinSDiagonal.sks */,
 				3D85182A1DFA625F00ABB058 /* CoinCross.sks */,
 				3D8518301DFA64EE00ABB058 /* CoinSCross.sks */,
+				3D7156E61DFF4DB9007EB201 /* Coin.sks */,
+				3D7156E81DFF4FF8007EB201 /* CoinSpecial.sks */,
 			);
 			name = "Scene Files";
 			sourceTree = "<group>";
@@ -336,6 +342,7 @@
 				3D7156C01DFF1A18007EB201 /* PlayerTrail.sks in Resources */,
 				3D7156DD1DFF46AF007EB201 /* explosion1.wav in Resources */,
 				3D07F5231DFA609800EC01B5 /* BreakArrow.sks in Resources */,
+				3D7156E71DFF4DB9007EB201 /* Coin.sks in Resources */,
 				3D7156D91DFF46AF007EB201 /* brick.caf in Resources */,
 				3D07F51F1DFA5FAC00EC01B5 /* PlatformArrow.sks in Resources */,
 				3D8518361DFB3C6300ABB058 /* spark.png in Resources */,
@@ -359,6 +366,7 @@
 				3D7156D81DFF46AF007EB201 /* boost.wav in Resources */,
 				3D07F51D1DFA5D1200EC01B5 /* CoinSArrow.sks in Resources */,
 				3D07F5271DFA619700EC01B5 /* Coin5Across.sks in Resources */,
+				3D7156E91DFF4FF8007EB201 /* CoinSpecial.sks in Resources */,
 				3D7156BE1DFF1597007EB201 /* BrokenPlatform.sks in Resources */,
 				3D85182B1DFA625F00ABB058 /* CoinCross.sks in Resources */,
 				3D85182D1DFA649C00ABB058 /* CoinS5Across.sks in Resources */,
