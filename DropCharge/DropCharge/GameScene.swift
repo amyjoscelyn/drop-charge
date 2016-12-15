@@ -469,8 +469,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func setPlayerVelocity(_ amount: CGFloat)
     {
-        let gain: CGFloat = 2.5
-        player.physicsBody!.velocity.dy = max(player.physicsBody!.velocity.dy, amount * gain)
+        player.physicsBody!.velocity.dy = max(player.physicsBody!.velocity.dy, amount * gameGain)
     }
     
     func jumpPlayer()
@@ -786,6 +785,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             while lastOverlayPosition.y < levelPositionY
             {
                 addRandomForegroundOverlay()
+            }
+        }
+        
+        // remove old foreground nodes...
+        for fgChild in fgNode.children
+        {
+            let nodePos = fgNode.convert(fgChild.position, to: self)
+            if !isNodeVisible(fgChild, positionY: nodePos.y)
+            {
+                fgChild.removeFromParent()
             }
         }
     }
