@@ -90,6 +90,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         SKAction.playSoundFileNamed("explosion3.wav", waitForCompletion: false),
         SKAction.playSoundFileNamed("explosion4.wav", waitForCompletion: false) ]
     
+    var redAlertTime: TimeInterval = 0
+    
     var lastOverlayPosition = CGPoint.zero
     var lastOverlayHeight: CGFloat = 0.0
     var levelPositionY: CGFloat = 0.0
@@ -668,6 +670,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             updateLava(deltaTime)
             updateCollisionLava()
             updateExplosions(deltaTime)
+            updateRedAlert(deltaTime)
         }
     }
     
@@ -738,6 +741,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             timeSinceLastExplosion = 0
             
             createRandomExplosion()
+        }
+    }
+    
+    func updateRedAlert(_ lastUpdateTime: TimeInterval)
+    {
+        redAlertTime += lastUpdateTime
+        let amt: CGFloat = CGFloat(redAlertTime) * π * 2.0 / 1.93725
+        let colorBlendFactor = (sin(amt) + 1.0) / 2.0
+        
+        for bgChild in bgNode.children
+        {
+            for node in bgChild.children
+            {
+                if let sprite = node as? SKSpriteNode
+                {
+                    let nodePos = bgChild.convert(sprite.position, to: self)
+                    
+                    if !isNodeVisible(sprite, positionY: nodePos.y)
+                    {
+                        sprite.removeFromParent()
+                    }
+                    else
+                    {
+                        sprite.color = SKColorWithRGB(255, g: 0, b: 0)
+                        sprite.colorBlendFactor = colorBlendFactor
+                    }
+                }
+            }
+            if bgChild.name == "Overlay" && bgChild.children.count == 0
+            {
+                bgChild.removeFromParent()
+            }
         }
     }
     
@@ -882,5 +917,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         let action = SKAction.screenShakeWithNode(worldNode, amount: amount, oscillations: 10, duration: 2.0)
         
         worldNode.run(action, withKey: "shake")
+    }
+    
+    func isNodeVisible(_ node: SKNode, positionY: CGFloat) -> Bool
+    {
+        if !camera!.contains(node)
+        {
+            if positionY < camera!.position.y - size.height * 2.0
+            {
+                return false
+            }
+        }
+        return true
     }
 }
