@@ -510,10 +510,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 run(soundBoost)
             }
         case PhysicsCategory.PlatformNormal:
-            if let _ = other.node as? SKSpriteNode
+            if let platform = other.node as? SKSpriteNode
             {
                 if player.physicsBody!.velocity.dy < 0
                 {
+                    platformAction(platform, breakable: false)
                     jumpPlayer()
                     run(soundJump)
                 }
@@ -523,7 +524,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             {
                 if player.physicsBody!.velocity.dy < 0
                 {
-                    emitParticles(name: "BrokenPlatform", sprite: platform)
+                    platformAction(platform, breakable: true)
                     jumpPlayer()
                     run(soundBrick)
                 }
@@ -929,5 +930,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             }
         }
         return true
+    }
+    
+    func platformAction(_ sprite: SKSpriteNode, breakable: Bool)
+    {
+        let amount = CGPoint(x: 0, y: -75.0)
+        let action = SKAction.screenShakeWithNode(sprite, amount: amount, oscillations: 10, duration: 2.0)
+        sprite.run(action)
+        
+        if breakable == true
+        {
+            emitParticles(name: "BrokenPlatform", sprite: sprite)
+        }
     }
 }
