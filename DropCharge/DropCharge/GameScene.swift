@@ -111,6 +111,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     var lives = 3
     
+    let gameGain: CGFloat = 2.5
+    
     override func didMove(to view: SKView)
     {
         setupNodes()
@@ -449,6 +451,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         let bombBlast = explosion(intensity: 2.0)
         bombBlast.position = bomb.position
         fgNode.addChild(bombBlast)
+        screenShakeByAmt(100)
         bomb.removeFromParent()
         run(soundExplosions[3])
         gameState = .playing
@@ -476,6 +479,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     func boostPlayer()
     {
         setPlayerVelocity(1200)
+        screenShakeByAmt(40)
     }
     
     func superBoostPlayer()
@@ -716,6 +720,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                     ]))
             }
             boostPlayer()
+            screenShakeByAmt(50)
             lives -= 1
             if lives <= 0
             {
@@ -765,6 +770,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         explode.position = convert(explosionPos, to: bgNode)
         explode.run(SKAction.removeFromParentAfterDelay(2.0))
         bgNode.addChild(explode)
+        
+        if randomNum == 3
+        {
+            screenShakeByAmt(10)
+        }
     }
     
     func explosion(intensity: CGFloat) -> SKEmitterNode
@@ -860,5 +870,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         sprite.run(SKAction.sequence([
             SKAction.scale(to: 0.0, duration: 0.5),
             SKAction.removeFromParent()]))
+    }
+    
+    func screenShakeByAmt(_ amt: CGFloat)
+    {
+        let worldNode = childNode(withName: "World")!
+        worldNode.position = CGPoint(x: size.width / 2.0, y: size.height / 2.0)
+        worldNode.removeAction(forKey: "shake")
+        
+        let amount = CGPoint(x: 0, y: -(amt * gameGain))
+        let action = SKAction.screenShakeWithNode(worldNode, amount: amount, oscillations: 10, duration: 2.0)
+        
+        worldNode.run(action, withKey: "shake")
     }
 }
