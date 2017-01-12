@@ -92,6 +92,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     var redAlertTime: TimeInterval = 0
     
+    var squashAndStretch: SKAction!
+    
     var lastOverlayPosition = CGPoint.zero
     var lastOverlayHeight: CGFloat = 0.0
     var levelPositionY: CGFloat = 0.0
@@ -154,6 +156,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         player = fgNode.childNode(withName: "Player") as! SKSpriteNode
         fgNode.childNode(withName: "Bomb")?.run(SKAction.hide())
         
+        setupLava()
+        
         platform5Across = loadForegroundOverlayTemplate("Platform5Across")
         platformArrow = loadForegroundOverlayTemplate("PlatformArrow")
         platformDiagonal = loadForegroundOverlayTemplate("PlatformDiagonal")
@@ -176,7 +180,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         addChild(cameraNode)
         camera = cameraNode
         
-        setupLava()
+        let squashAction = SKAction.scaleX(to: 1.15, y: 0.85, duration: 0.25)
+        squashAction.timingMode = .easeInEaseOut
+        let stretchAction = SKAction.scaleX(to: 0.85, y: 1.15, duration: 0.25)
+        stretchAction.timingMode = .easeInEaseOut
+        
+        squashAndStretch = SKAction.sequence([squashAction, stretchAction])
     }
     
     func setupLevel()
@@ -613,11 +622,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             {
                 playerTrail.particleBirthRate = 200
             }
+            player.run(squashAndStretch)
         }
         else if player.physicsBody!.velocity.dy > CGFloat(0.0) && playerState != .jump
         {
             playerState = .jump
-            print("Jumping.")
+//            print("Jumping.")
+            player.run(squashAndStretch)
         }
         
         // Animate player
